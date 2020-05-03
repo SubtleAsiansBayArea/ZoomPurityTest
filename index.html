@@ -10,8 +10,8 @@
         let ol = document.getElementById('questions');
         for (let question of questions) {
           const listItem = document.createElement("li");
-          listItem.innerHTML = `<input type="checkbox"/> ${question}`;
-          ol.appendChild(listItem)
+          listItem.innerHTML = `<label><input type="checkbox" /> ${question}</label>`;
+          ol.appendChild(listItem);
         }
       }
 
@@ -25,7 +25,7 @@
         }
         file.send(null);
       }
-      window.onload = loadQuestionsFile()
+      window.onload = loadQuestionsFile();
 
 
       function clearCheckboxes() {
@@ -75,8 +75,8 @@
       </ol>
 
       <div id="button-row">
-        <input class="calculate" type="button" value="Calculate" onclick="calculateScoreAndDisplayText()"/>
-        <input class="clear" type="button" value="Clear checkboxes" onclick="clearCheckboxes()"/>
+        <input class="calculate" type="button" value="Calculate" onclick="calculateScoreAndDisplayText()" />
+        <input class="clear" type="button" value="Clear checkboxes" onclick="clearCheckboxes()" />
       </div>
     </section>
     <section>
