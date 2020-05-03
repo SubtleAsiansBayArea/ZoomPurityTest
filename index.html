@@ -1,9 +1,33 @@
+<!DOCTYPE html>
 <html>
   <!-- if you're reading this - subscribe to http://twitch.tv/riallymundane | follow ig: @letrainfalldown | visit http://henrychen.org/ | follow ig: @a.kalorie | follow ig: @yayarea.foodie -->
   <head>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,400;1,600;1,700&display=swap" rel="stylesheet">  
 
     <script>
+      function updateQuestions(file) {
+        questions = file.split('\n');
+        let ol = document.getElementById('questions');
+        for (let question of questions) {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `<input type="checkbox"/> ${question}`;
+          ol.appendChild(listItem)
+        }
+      }
+
+      function loadQuestionsFile() {
+        var file = new XMLHttpRequest();
+        file.open('GET', 'questions.txt', true);
+        file.onreadystatechange = function() {
+          if (file.readyState === 4 && file.status == 200) {
+            updateQuestions(file.responseText);
+          }
+        }
+        file.send(null);
+      }
+      window.onload = loadQuestionsFile()
+
+
       function clearCheckboxes() {
         var inputs = document.getElementsByTagName('input');
         for (var i=0; i<inputs.length; i++) {
@@ -30,89 +54,7 @@
         window.scrollTo(0, document.body.scrollHeight);
       }
     </script>
-    <style>
-      body {
-        margin: 0 auto;
-        max-width: 1000px;
-        font-family: "Work Sans", sans-serif;
-        font-size: 16px;
-      }
-      .header {
-        margin-top: 30px;
-        text-align: center;
-      }
-      .header img {
-        max-height: 150px;
-      }
-      .support {
-        padding-top: 20px;
-        margin: 20px 0;
-        text-align: center;
-        border-top: 1px dashed #355a76;
-      }
-      .support span {
-        margin-top: 10px;
-        font-size: 11px;
-      }
-      @media all and (max-width: 1000px) {
-        section {
-          padding: 20px;
-        }
-      }
-      #button-row { 
-        padding-bottom: 40px; 
-        display: flex;
-        justify-content: space-evenly;
-      }
-      #button-row input[type=button] {
-        outline: none;
-        padding: 15px 40px;
-        transition: background-color 0.4s linear;
-        font-size: 14px;
-        text-transform: uppercase;
-        border: none;
-        background-color: #355a76;
-        color: #FFF;
-        letter-spacing: 1px;
-      }
-      #button-row input[type=button]:hover {
-        background-color: #ee5f23;
-        color: #222;
-        transition: background-color 0.4s linear;
-      }
-      h1 {
-        color: #355a76;
-        text-align: center;
-        font-weight: 700;
-        font-style: italic;
-        font-size: 30px;
-      }
-      h3 {
-        color: #ee5f23;
-        font-weight: 600;
-      }
-      p, .crafted {
-        margin: 20px 0;
-        font-size: 14px;
-        font-weight: 200;
-        text-align: center;
-      }
-      p {
-        padding-bottom: 20px;
-        border-bottom: 1px dashed #355a76;
-      }
-      a {
-        text-decoration: none;
-        color: #ee5f23;
-        font-weight: 400;
-      }
-      ol {
-        line-height: 2em;
-      }
-      #result {
-        padding: 50px 0;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
@@ -129,312 +71,12 @@
       
       <h3>Have you: </h3>
       
-      <ol>
-        <li>
-          <input type="checkbox"></input> Flirted with someone else in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been in and broke Shelter in Place/quarantine/lockdown/etc. with someone you met through Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Hooked up with someone you met initially through Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been naked while in a Zoom call with the camera off?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been naked while in a Zoom call with the camera on?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Fapped/masturbated while on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Smoked a blunt while in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been under the influence in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Stayed in a Zoom call all night until the sun rose?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Stayed in a Zoom call all night until the sun rose with only one other person for at least 2 hours?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Stayed in a Zoom call for over 24 hours?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Performed an ASMR session in Zoom
-        </li>
-        <li>
-          <input type="checkbox"></input>  Danced (for Tiktok or any other reason) with your camera on, in Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Celebrated someone's birthday on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Asked someone to take off a piece of clothing?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been on a call in Zoom with no bottoms on?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been shirtless in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Sat alone in a Zoom call waiting for someone to join for over an hour?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Sent NSFW messages to another Zoom call participant using the PM feature?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Asked someone out during a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Never said a word throughout an entire call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Rage quit a call because people kept talking over you?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Got muted because you were loud AF?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Got muted because you didn’t STFU?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Started a political debate on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Started a religious debate on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Sent a Zoom PM to the wrong person? (rip)
-        </li>
-        <li>
-          <input type="checkbox"></input>  Forgot to mute yourself during a Zoom call and said something inappropriate?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Forgot to turn off the camera and showed something inappropriate?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Cried in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Cried in a Zoom call with your camera on?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Left your camera on in call while you were away for over an hour?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Actively participated in a call while taking a shit?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Have to answer a Zoom question while you were taking a shit so you had to hold it while   you answered?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Had a virtual background/filter on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Used a basic AF Snap Camera filter in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Argued about something stupid during a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Shit on someone in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Offended the entire call by saying/doing something?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Do a weird flex during a Zoom call? 
-        </li>
-        <li>
-          <input type="checkbox"></input>  Do an actual flex during a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Mass mukbanged (social streamed eating) on a call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Participated in a group picture on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Make a coordinated heart/other shape (stationary) during a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  “Pass the pen”/do some coordinated movement (dynamic movement) during a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Had a lewd/NSFW conversation in a work-affiliated Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Did you play games/jackbox.tv over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Simped over someone on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Run someone you hate in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Unexpectedly ran into someone you had ~ history ~ (romantic, sexual, etc.) with in a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Did you do karaoke/sing over zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Cucked someone (screwed someone else’s SO while they were watching) over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been cucked by someone (watched someone else screwing your SO) over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Debated the answer to life on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Worked on a plan to auction/make a dating profile for  you or your fellow Zoomer on a dating app or dating FB group (SAD, SAL,...etc.)
-        </li>
-        <li>
-          <input type="checkbox"></input>  Sent to a breakout room for misbehaving?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Had everyone else leave you for a breakout room/another call because you were annoying AF?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Talked/debated about or watched porn during the Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Gotten kicked out of a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Confessed your love to someone over Zoom in front of the entire call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Ordered/Received food/delivery from someone else over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Attended a work meeting on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Talked about your ex over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been broken up with over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Forgot to change your name between Zoom calls?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Performed a striptease on a Zoom call? 
-        </li>
-        <li>
-          <input type="checkbox"></input>  Have you watched a show/drama while you are on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Streamed a full movie through a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Ever had video sex while in Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been caught picking your nose on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Helped someone or asked someone for Zoom troubleshooting?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been on two different Zoom calls at the same time (probably with two different devices)?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been on one Zoom call with two different devices?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Done happy hour over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Raved/Partied over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Bought Zoom Pro?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Fallen asleep or taken a nap on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been told you were snoring on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Woke up to an empty Zoom call room? 
-        </li>
-        <li>
-          <input type="checkbox"></input>  Shown off a collection of something?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Randomly made the host of a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Livestreamed a Zoom call meeting?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Collaborated on a project through a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Planned anarchy/a takeover/etc. on a Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Had a date with someone over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Gave relationship advice or talked about relationships?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Used Zoom before the pandemic?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Had wholesome/hoesome (terrible) therapy sessions with others? 
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been kicked out of a Zoom call due to poor internet connection?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Given a recital/performance on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Cooked on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Cleaned house while on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Run errands while on Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Used Zoom outdoors?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Dialed into the Zoom room using the phone number?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Had an interview over Zoom?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Zoomed while driving?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Been given a Zoom Educator Account?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Spent over 5 consecutive hours in a single Zoom call?
-        </li>
-        <li>
-          <input type="checkbox"></input>  Spent over 10 consecutive hours in a single Zoom call?  </li>
-        </li>
+      <ol id="questions">
       </ol>
 
       <div id="button-row">
-        <input class="calculate" type="button" value="Calculate" onclick="calculateScoreAndDisplayText()"></input>
-        <input class="clear" type="button" value="Clear checkboxes" onclick="clearCheckboxes()"></input>
+        <input class="calculate" type="button" value="Calculate" onclick="calculateScoreAndDisplayText()"/>
+        <input class="clear" type="button" value="Clear checkboxes" onclick="clearCheckboxes()"/>
       </div>
     </section>
     <section>
