@@ -1,0 +1,81 @@
+body {
+  margin: 0 auto;
+  max-width: 1000px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+}
+.header {
+  margin-top: 30px;
+  text-align: center;
+}
+.header img {
+  max-height: 150px;
+}
+.support {
+  padding-top: 20px;
+  margin: 20px 0;
+  text-align: center;
+  border-top: 1px dashed #355a76;
+}
+.support span {
+  margin-top: 10px;
+  font-size: 11px;
+}
+@media all and (max-width: 1000px) {
+  section {
+    padding: 20px;
+  }
+}
+#button-row { 
+  padding-bottom: 40px; 
+  display: flex;
+  justify-content: space-evenly;
+}
+#button-row input[type=button] {
+  outline: none;
+  padding: 15px 40px;
+  transition: background-color 0.4s linear;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: none;
+  background-color: #355a76;
+  color: #FFF;
+  letter-spacing: 1px;
+}
+#button-row input[type=button]:hover {
+  background-color: #ee5f23;
+  color: #222;
+  transition: background-color 0.4s linear;
+}
+h1 {
+  color: #355a76;
+  text-align: center;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 30px;
+}
+h3 {
+  color: #ee5f23;
+  font-weight: 600;
+}
+p, .crafted {
+  margin: 20px 0;
+  font-size: 14px;
+  font-weight: 200;
+  text-align: center;
+}
+p {
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #355a76;
+}
+a {
+  text-decoration: none;
+  color: #ee5f23;
+  font-weight: 400;
+}
+ol {
+  line-height: 2em;
+}
+#result {
+  padding: 50px 0;
+}
